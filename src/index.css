@@ -1,0 +1,65 @@
+@import 'tailwindcss';
+
+/* App.css */
+
+/* Basic reset & dark background */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: white; /* Dark background */
+  color: black; /* Light text */
+}
+
+h2 {
+  margin: 16px;
+  color: #fff;
+}
+
+/* Container for each 'row' of data */
+.bg-light {
+  background-color: rgb(103, 60, 60); /* Slightly lighter gray for contrast */
+  padding: 8px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  border-left: 3px solid #00bf9a; /* A bright accent color (greenish) */
+}
+
+/* Button styling (toggle arrows) */
+.bg-light button {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.bg-light button:hover {
+  color: #ccc; /* Lighter on hover */
+}
+
+/* Text styling for key-value pairs */
+.bg-light span {
+  margin-right: 12px;
+  font-size: 0.9rem;
+}
+
+/* Optional: style for 'delete' button if you add it */
+.delete-btn {
+  color: red;
+  margin-left: 8px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-weight: bold;
+}
+.delete-btn:hover {
+  color: #ff5555;
+}
+
+.error-container {
+  @apply min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-400 via-indigo-400 to-blue-400;
+}
+.error-link {
+  @apply px-6 py-3 bg-white text-blue-500 rounded-full font-semibold shadow-lg hover:bg-gray-200 transition-all;
+}
