@@ -1,8 +1,7 @@
-// src/features/nodesSlice.ts
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { TreeNodeData } from '@/types';
+import { TreeNodeData } from 'types';
 import data from '@/data.json';
-import { filteredData } from '@/utils/filteredData';
+import { filteredData } from 'utils/filteredData';
 
 const initialState: TreeNodeData[] = filteredData(data as TreeNodeData[]);
 
@@ -27,7 +26,6 @@ function deleteNodeRecursive(
             records: deleteNodeRecursive(node.children[key].records, id),
           };
         }
-
         return {
           ...node,
           children: newChildren,

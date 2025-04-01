@@ -1,5 +1,5 @@
 import React from 'react';
-import { TreeNodeData } from '@/types';
+import { TreeNodeData } from 'types';
 import { Row } from './Row';
 
 interface TableProps {
@@ -28,7 +28,12 @@ export const Table: React.FC<TableProps> = ({ nodes }) => {
       {/* Table body */}
       <tbody>
         {nodes.map((node, index) => (
-          <Row  index={index} key={node.data.ID} node={node} columns={columnNames} />
+          <Row
+            index={index}
+            key={node.data.ID}
+            node={node}
+            columns={columnNames}
+          />
         ))}
       </tbody>
     </table>
