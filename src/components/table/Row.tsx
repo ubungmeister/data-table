@@ -25,7 +25,6 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
   const hasRecords = records.length > 0;
 
   const handleDelete = (id: string) => {
-    console.log('delete:', id);
     dispatch(deleteNode(id));
   };
 
@@ -76,19 +75,14 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
         <tr>
           <td colSpan={columns.length} className="pl-10">
             {/* For each child group, we render a new Table */}
-            {children.map(
-              ([groupName, groupRecords]) => (
-                console.log('group:', children),
-                (
-                  <div
-                    key={node.data['ID'] + groupName}
-                    style={{ marginTop: '8px' }}
-                  >
-                    <Table nodes={groupRecords.records} />
-                  </div>
-                )
-              )
-            )}
+            {children.map(([groupName, groupRecords]) => (
+              <div
+                key={node.data['ID'] + groupName}
+                style={{ marginTop: '8px' }}
+              >
+                <Table nodes={groupRecords.records} />
+              </div>
+            ))}
           </td>
         </tr>
       )}
