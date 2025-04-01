@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Table } from './Table';
-import { TreeNodeData } from '@/types';
-import { deleteNode } from '@/app/slices/nodeSlice';
+import { TreeNodeData } from 'types';
+import { deleteNode } from 'app/slices/nodeSlice';
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '@/app/store';
+import { AppDispatch } from 'app/store';
 
 interface RowProps {
   node: TreeNodeData;
@@ -15,8 +15,8 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
   const dispatch = useDispatch<AppDispatch>();
   const [expanded, setExpanded] = useState(false);
 
-  // Check if node has any children
-  const children = Object.entries(node.children!);
+  // Check if node has any children, if not, we don't need to render the expand button
+  const children = Object.entries(node.children! ?? {});
   // Grab the first child key
   const childKey = Object.keys(node.children ?? {})[0];
   // Grab the records from the first child key
@@ -29,11 +29,13 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
     dispatch(deleteNode(id));
   };
 
+  const getRowBg = (index: number) => (index % 2 === 0 ? 'bg-gray-200' : '');
+
   return (
     <>
       <tr>
         {/* Expand cell */}
-        <td className={`${index % 2 === 0 ? 'bg-gray-200' : ''} text-center`}>
+        <td className={`${getRowBg} text-center`}>
           {hasRecords ? (
             <button
               onClick={() => setExpanded(!expanded)}
@@ -48,13 +50,13 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
 
         {/* Data cells */}
         {columns.map((col) => (
-          <td className={index % 2 === 0 ? 'bg-gray-200' : ''} key={col}>
+          <td className={`${getRowBg} text-center`} key={col}>
             {node.data[col] || ''}
           </td>
         ))}
 
         {/* Delete button */}
-        <td className={`${index % 2 === 0 ? 'bg-gray-200' : ''} text-center`}>
+        <td className={`${getRowBg} text-center`}>
           <button
             style={{
               background: 'none',

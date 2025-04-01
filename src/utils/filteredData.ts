@@ -1,4 +1,4 @@
-import { TreeNodeData } from '../types';
+import { TreeNodeData } from 'types';
 
 export const filteredData = (allNodes: TreeNodeData[]) => {
   const seenIds: string[] = [];
