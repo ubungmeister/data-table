@@ -34,7 +34,7 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
     <>
       <tr>
         {/* Expand cell */}
-        <td className={`${getRowBg} text-center`}>
+        <td className={`${getRowBg(index)} text-center`}>
           {hasRecords ? (
             <button
               onClick={() => setExpanded(!expanded)}
@@ -49,13 +49,13 @@ export const Row: React.FC<RowProps> = ({ node, columns, index }) => {
 
         {/* Data cells */}
         {columns.map((col) => (
-          <td className={`${getRowBg} text-center`} key={col}>
+          <td className={`${getRowBg(index)} text-center`} key={col}>
             {node.data[col] || ''}
           </td>
         ))}
 
         {/* Delete button */}
-        <td className={`${getRowBg} text-center`}>
+        <td className={`${getRowBg(index)} text-center`}>
           <button
             style={{
               background: 'none',
